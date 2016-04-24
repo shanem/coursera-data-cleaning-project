@@ -30,10 +30,21 @@ extendActivityLabel <- function(data) {
     data
 }
 
+extendSubjects <- function(data) {
+    trainingSubjects <- read.csv2('train/subject_train.txt', sep="", header=FALSE)
+    testSubjects <- read.csv2('test/subject_test.txt', sep="", header=FALSE)
+    
+    subjects <- rbind(trainingSubjects, testSubjects)
+    data <- cbind(subject = as.numeric(subjects[, "V1"]), data)
+    
+    data
+}
+
 runAnalysis <- function() {
     data <- readAndMergeData()
     data <- labelData(data)
     data <- subsetMeanAndStdColumns(data)
     data <- extendActivityLabel(data)
+    data <- extendSubjects(data)
     data
 }
