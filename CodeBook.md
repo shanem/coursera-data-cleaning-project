@@ -27,6 +27,7 @@ See [features_info.txt](features_info.txt) from the UCI HAR Dataset for methodol
 
 ## Examples
 `tBodyAcc-mean()-X`: The mean across all trials for a given (subject, activity ) pair of:
-	- mean of body acceleration in the time domain in the X direction
+- mean of body acceleration in the time domain in the X direction
+
 `tBodyAcc-std()-X`: The mean across all trials for a given (subject, activity ) pair of:
-	- standard deviation of body acceleration in the time domain in the X direction
+- standard deviation of body acceleration in the time domain in the X direction
