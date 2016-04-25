@@ -21,7 +21,7 @@ activity
 	```
 
 Remaining fields represent the mean values for various measurements from the UCI HAR Dataset, for each unique (subject, activity) pair.
-See features_info.txt from the UCI HAR Dataset for methodology and explanation of each measurement
+See [features_info.txt](features_info.txt) from the UCI HAR Dataset for methodology and explanation of each measurement
 
 ## Examples
 `tBodyAcc-mean()-X`: The mean across all trials for a given (subject, activity ) pair of:
