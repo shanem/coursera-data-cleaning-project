@@ -3,6 +3,7 @@ readAndMergeData <- function() {
     trainingData <- read.csv2('train/X_train.txt', sep="", header=FALSE)
     testData <- read.csv2('test/X_test.txt', sep="", header=FALSE)
     data <- rbind(trainingData, testData)
+    data <- as.data.frame(lapply(data, function(x) as.numeric(as.character(x))))
     data
 }
 
@@ -40,11 +41,22 @@ extendSubjects <- function(data) {
     data
 }
 
+aggregateBySubjectAndActivity <- function(data) {
+    bySubjectAndActivity <- aggregate(data, by=list(data$subject, data$activity), FUN=mean)
+    # Clean up extra columns introduced by aggregate
+    bySubjectAndActivity <- bySubjectAndActivity[, !(names(bySubjectAndActivity) %in% c("subject", "activity"))]
+    colnames(bySubjectAndActivity)[which(names(bySubjectAndActivity) == "Group.1")] <- "subject"
+    colnames(bySubjectAndActivity)[which(names(bySubjectAndActivity) == "Group.2")] <- "activity"
+    bySubjectAndActivity
+}
+
 runAnalysis <- function() {
     data <- readAndMergeData()
     data <- labelData(data)
     data <- subsetMeanAndStdColumns(data)
     data <- extendActivityLabel(data)
     data <- extendSubjects(data)
-    data
+    
+    meansBySubjectAndActivity <- aggregateBySubjectAndActivity(data)
+    meansBySubjectAndActivity
 }
