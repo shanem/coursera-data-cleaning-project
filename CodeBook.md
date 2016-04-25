@@ -25,7 +25,8 @@ Possible values include:
 These represent the mean values for various measurements from the UCI HAR Dataset, for each unique (subject, activity) pair.
 See [features_info.txt](features_info.txt) from the UCI HAR Dataset for methodology and explanation of each measurement
 
-## Examples
+**Examples**
+
 `tBodyAcc-mean()-X`: The mean across all trials for a given (subject, activity ) pair of:
 - mean of body acceleration in the time domain in the X direction
 
