@@ -32,3 +32,15 @@ See [features_info.txt](features_info.txt) from the UCI HAR Dataset for methodol
 
 `tBodyAcc-std()-X`: The mean across all trials for a given (subject, activity ) pair of:
 - standard deviation of body acceleration in the time domain in the X direction
+
+
+# Generation
+
+* Given the UCI HAR Dataset in the current working directory,
+* Reads and concatenates raw measurements from `train/X_train.txt` and `test/X_test.txt`
+* Applys labels to dataframe as described in `features.txt`
+* Excludes columns not labelled as either a mean or standard deviation of a measurement (i.e. not ending in either `mean()` or `std()`)
+* Annotates each record with the activity, as reported in `train/y_train.txt` and `test/y_test.txt`, and as labelled in `activity_labels.txt`
+* Annotates each record with the subject number, as reported in `train/subject_train.txt` and `test/subject_test.txt`
+* Aggregates this dataset by (subject, activity), calculating the means of each measurement
+* Writes result to `meanAndStdMeasurementsBySubjectAndActivity.txt`
