@@ -50,7 +50,7 @@ aggregateBySubjectAndActivity <- function(data) {
     bySubjectAndActivity
 }
 
-runAnalysis <- function() {
+meansBySubjectAndActivity <- function() {
     data <- readAndMergeData()
     data <- labelData(data)
     data <- subsetMeanAndStdColumns(data)
@@ -60,3 +60,6 @@ runAnalysis <- function() {
     meansBySubjectAndActivity <- aggregateBySubjectAndActivity(data)
     meansBySubjectAndActivity
 }
+
+outputData <- meansBySubjectAndActivity()
+write.table(meansBySA, file="meanAndStdMeasurementsBySubjectAndActivity.txt", row.name=FALSE)
